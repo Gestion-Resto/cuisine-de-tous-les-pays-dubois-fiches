@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <title>Potages & Consommés – Urbain Dubois (p.49-75) | gestionresto.fr</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #fff; --bg2: #f7f6f3; --bg3: #f0ede4;
+      --border: rgba(0,0,0,0.11); --border2: rgba(0,0,0,0.20);
+      --text: #1f2419; --text2: #6b6b67; --text3: #9a9a94;
+      --or-bg: #fdf3dc; --or-txt: #7a3e1c;
+      --vert-bg: #e8f0e9; --vert-txt: #1c2a1f;
+      --brun-bg: #f5ead8; --brun-txt: #633806;
+      --rouge-bg: #FAECE7; --rouge-txt: #712B13;
+      --gris-bg: #F1EFE8; --gris-txt: #444441;
+      --teal-bg: #E1F5EE; --teal-txt: #085041;
+      --radius: 10px; --radius-sm: 6px;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1f1b; --bg2: #222820; --bg3: #292e27;
+        --border: rgba(255,255,255,0.09); --border2: rgba(255,255,255,0.18);
+        --text: #f0ede4; --text2: #9a9a92; --text3: #6a6a64;
+        --or-bg: #3a2a06; --or-txt: #f5c96a;
+        --vert-bg: #0c1f0e; --vert-txt: #8ecf9a;
+        --brun-bg: #3a1e06; --brun-txt: #e8b07a;
+        --rouge-bg: #4A1B0C; --rouge-txt: #F0997B;
+        --gris-bg: #2C2C2A; --gris-txt: #D3D1C7;
+        --teal-bg: #04342C; --teal-txt: #9FE1CB;
+      }
+    }
+    body { font-family: Georgia, 'Times New Roman', serif; background: var(--bg3); color: var(--text); min-height: 100vh; }
+    .page { max-width: 1200px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* ── HEADER ── */
+    .site-header { background: #1c2a1f; border-radius: var(--radius); padding: 1.6rem 2rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem; }
+    .site-header h1 { font-size: 22px; font-weight: 600; color: #f5e9c5; margin-bottom: 4px; letter-spacing: -.2px; }
+    .site-header h1 em { color: #c9a14a; font-style: italic; }
+    .site-header p { font-size: 12px; color: #c5bfa0; font-family: system-ui, sans-serif; }
+    .cat-badge { display: inline-block; padding: 5px 16px; border-radius: 40px; font-size: 13px; font-weight: 600; background: #c9a14a; color: #1c2a1f; font-family: sans-serif; }
+
+    /* ── NAVIGATION SELECT ── */
+    .nav-select { margin-bottom: 1.5rem; }
+    .nav-select label { font-size: 13px; color: var(--text2); font-family: system-ui, sans-serif; display: block; margin-bottom: 6px; }
+    select { width: 100%; max-width: 700px; padding: 0.65rem 1.2rem; font-size: 1rem; border-radius: 40px; border: 1px solid var(--border2); background: var(--bg); color: var(--text); font-family: system-ui; cursor: pointer; }
+
+    /* ── BOUTON IMPRESSION ── */
+    .btn-print { display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; background: #1c2a1f; color: #f5e9c5; border: none; border-radius: var(--radius-sm); font-size: 13px; font-weight: 600; cursor: pointer; font-family: sans-serif; margin-bottom: 1.5rem; transition: background .15s; }
+    .btn-print:hover { background: #c9a14a; color: #1c2a1f; }
+
+    /* ── FICHE HEADER ── */
+    .fiche-header { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.2rem 1.5rem; margin-bottom: 1rem; border-left: 4px solid #c9a14a; }
+    .title-row { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin-bottom: 6px; }
+    .main-title { font-size: 26px; font-weight: 700; font-family: Georgia, serif; line-height: 1.2; color: var(--text); }
+    .reference { font-size: 12px; font-family: monospace; color: var(--text2); background: var(--bg2); padding: 3px 10px; border-radius: 30px; display: inline-block; border: 0.5px solid var(--border); }
+    .fiche-source { font-size: 12px; color: var(--text2); margin-top: 5px; font-family: sans-serif; font-style: italic; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .tag { display: inline-block; padding: 3px 11px; border-radius: 20px; font-size: 11px; font-weight: 600; font-family: sans-serif; }
+    .tag-or { background: var(--or-bg); color: var(--or-txt); }
+    .tag-vert { background: var(--vert-bg); color: var(--vert-txt); }
+    .tag-brun { background: var(--brun-bg); color: var(--brun-txt); }
+    .tag-rouge { background: var(--rouge-bg); color: var(--rouge-txt); }
+    .tag-gris { background: var(--gris-bg); color: var(--gris-txt); }
+    .tag-teal { background: var(--teal-bg); color: var(--teal-txt); }
+
+    /* ── CARDS ── */
+    .card { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 1.25rem 1.5rem; margin-bottom: 1rem; }
+    .clabel { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: var(--text2); margin-bottom: 12px; font-family: sans-serif; }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+
+    /* ── TEMPS ── */
+    .time-grid { display: grid; grid-template-columns: 110px 1fr auto; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .time-label { color: var(--text2); font-size: 13px; font-family: sans-serif; }
+    .time-input { width: 100px; padding: 6px 8px; border-radius: 20px; border: 0.5px solid var(--border2); background: var(--bg); color: var(--text); text-align: center; font-family: monospace; font-weight: 500; }
+    .time-unit { color: var(--text2); font-size: 12px; font-family: sans-serif; }
+    .check-row { margin-top: 10px; display: flex; align-items: center; gap: 8px; font-size: 11px; font-family: sans-serif; color: var(--text2); }
+    .info-time { font-size: 10px; color: var(--text3); margin-top: 6px; font-style: italic; font-family: sans-serif; }
+
+    /* ── COÛT ── */
+    .ri { display: flex; justify-content: space-between; align-items: center; font-size: 13px; padding: 6px 0; border-bottom: 0.5px solid var(--border); font-family: sans-serif; flex-wrap: wrap; gap: 4px; }
+    .rl { color: var(--text2); }
+    .rv { font-weight: 700; color: var(--text); }
+
+    /* ── TABLE INGRÉDIENTS ── */
+    .ingr-table { width: 100%; border-collapse: collapse; font-size: 12px; font-family: sans-serif; }
+    .ingr-table th { text-align: left; color: var(--text2); font-weight: 600; padding: 5px 7px; border-bottom: 0.5px solid var(--border2); font-size: 10px; text-transform: uppercase; letter-spacing: .08em; }
+    .ingr-table td { padding: 7px 7px; border-bottom: 0.5px solid var(--border); vertical-align: middle; }
+    .ni { width: 82px; padding: 6px 8px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); font-size: 12px; font-family: monospace; background: var(--bg); color: var(--text); text-align: right; font-weight: 500; }
+    .ni:focus { outline: none; border-color: #c9a14a; }
+    .ni.prix { background: #fdf3dc; border-color: #e8c96a; font-weight: 600; }
+    .ni.qty { background: #e8f0e9; border-color: #8ab89a; font-weight: 600; }
+
+    /* ── PORTIONS & COEFF ── */
+    .plbl { font-size: 11px; color: var(--text2); font-family: sans-serif; display: block; margin-bottom: 4px; }
+    .portions-row { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; }
+    .env-bar { height: 7px; border-radius: 6px; background: var(--border); overflow: hidden; margin: 8px 0; }
+
+    /* ── ÉTAPES ── */
+    .step { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 14px; }
+    .snum { width: 26px; height: 26px; border-radius: 50%; background: #1c2a1f; color: #f5e9c5; font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; font-family: sans-serif; }
+    .stitle { font-weight: 800; font-size: 13px; margin-bottom: 4px; font-family: sans-serif; color: var(--text); }
+    .sdesc { font-size: 12px; color: var(--text2); line-height: 1.65; font-family: sans-serif; }
+
+    /* ── NUTRITIONNEL ── */
+    .nut-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+    .nc { background: var(--bg2); border-radius: var(--radius-sm); padding: 10px; text-align: center; }
+    .nv { font-size: 18px; font-weight: 700; font-family: sans-serif; color: var(--text); }
+    .nl { font-size: 10px; color: var(--text2); margin-top: 3px; font-family: sans-serif; }
+
+    .tags-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .footer { text-align: center; font-size: 11px; color: var(--text3); margin-top: 2rem; padding-top: 1.5rem; border-top: 0.5px solid var(--border); font-family: sans-serif; }
+
+    @media (max-width: 767px) { .two-col { grid-template-columns: 1fr; } .nut-grid { grid-template-columns: repeat(2, 1fr); } .page { padding: 1rem; } .main-title { font-size: 20px; } .site-header { padding: 1.2rem; } select { max-width: 100%; } }
+    @media (max-width: 400px) { .main-title { font-size: 17px; } }
+    @media print { .btn-print, .nav-select, .site-header, .footer { display: none !important; } body { background: white; } .card { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="site-header">
+    <div>
+      <h1>Urbain Dubois — <em>Cuisine de tous les Pays</em> <span style="font-size:.75rem;background:#7a3e1c;padding:2px 10px;border-radius:30px;color:#f5e9c5;font-style:normal;font-weight:400;margin-left:8px;">1872</span></h1>
+      <p>Fiches techniques – Potages & Consommés · pages 49 à 75 · gestionresto.fr</p>
+    </div>
+    <div><span class="cat-badge">🍲 Potages & Consommés</span></div>
+  </div>
+
+  <div class="nav-select">
+    <label for="itemSelect">📖 Choisir une préparation :</label>
+    <select id="itemSelect"></select>
+  </div>
+  <button class="btn-print" onclick="window.print()">🖨️ Imprimer en PDF (A4 portrait)</button>
+
+  <div id="ficheContainer"></div>
+
+  <div class="footer">© gestionresto.fr — 12 fiches techniques · Données modifiables · Urbain Dubois, <em>Cuisine de tous les Pays</em> (1872)</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+// ═══════════════════════════════════════════════════════════
+// DONNÉES POTAGES — CUISINE DE TOUS LES PAYS, U. DUBOIS 1872
+// Pages 49 à 75
+// ═══════════════════════════════════════════════════════════
+var itemsData = [
+  {
+    id: "consomme_simple",
+    nom: "Consommé simple (bouillon clarифié)",
+    page: 49,
+    source: "Bœuf, veau, volaille, légumes, aromates",
+    tags: ["Consommé","Bouillon","Clarifié","Classique"],
+    prepBase: 30, cookBase: 180, dressBase: 10,
+    ingredients: [
+      {name:"Bœuf (macreuse ou gîte)",qtyRef:0.5,unit:"kg",priceUnit:9,defaultPrice:9,defaultQty:0.5},
+      {name:"Jarret de veau",qtyRef:0.3,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.3},
+      {name:"Carcasse de volaille",qtyRef:0.3,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.3},
+      {name:"Carottes",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1},
+      {name:"Oignons",qtyRef:0.08,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.08},
+      {name:"Poireau",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1},
+      {name:"Céleri branche",qtyRef:0.05,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.05},
+      {name:"Bouquet garni",qtyRef:1,unit:"pièce",priceUnit:0.5,defaultPrice:0.5,defaultQty:1},
+      {name:"Blancs d'œufs (clarification)",qtyRef:2,unit:"unit",priceUnit:0.3,defaultPrice:0.3,defaultQty:2},
+      {name:"Eau froide",qtyRef:2,unit:"L",priceUnit:0.01,defaultPrice:0.01,defaultQty:2},
+      {name:"Sel fin",qtyRef:0.01,unit:"kg",priceUnit:0.5,defaultPrice:0.5,defaultQty:0.01}
+    ],
+    steps: [
+      {t:"Mise en pot", d:"Mettre les viandes à l'eau froide avec légumes et bouquet garni. Porter lentement à ébullition. Écumer soigneusement dès les premières bulles."},
+      {t:"Cuisson lente", d:"Maintenir à très petit frémissement pendant 3 à 4 heures. Ne jamais laisser bouillir à gros bouillons : le bouillon resterait trouble."},
+      {t:"Clarification", d:"Dégraisser le bouillon refroidi. Battre légèrement les blancs d'œufs avec un peu de viande hachée. Incorporer au bouillon froid, porter à ébullition en fouettant, puis laisser coaguler."},
+      {t:"Passage à l'étamine", d:"Passer doucement le bouillon à travers une étamine mouillée sans presser. Le consommé doit être limpide et d'un beau doré ambré."},
+      {t:"Service", d:"Servir brûlant en tasse ou en soupière. Selon Dubois : la limpidité est l'honneur du consommé."}
+    ],
+    equip: ["Grande marmite","Étamine ou passoire fine","Louche","Soupière"],
+    allerg: ["Céleri"],
+    nut: {kcal: 45, prot: 7, lip: 1, glu: 2},
+    co2: "0.8 kg", eau: "120 L", env: 22,
+    nota: "Même base pour tous les consommés spéciaux. La qualité du consommé dépend entièrement de la lenteur de cuisson et du soin de l'écumage."
+  },
+  {
+    id: "consomme_royale",
+    nom: "Consommé à la royale",
+    page: 51,
+    source: "Consommé clarifié, royale aux œufs et crème",
+    tags: ["Consommé","Royale","Garniture","Grande cuisine"],
+    prepBase: 25, cookBase: 30, dressBase: 10,
+    ingredients: [
+      {name:"Consommé clarifié (base)",qtyRef:1.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:1.5},
+      {name:"Œufs entiers",qtyRef:3,unit:"unit",priceUnit:0.3,defaultPrice:0.3,defaultQty:3},
+      {name:"Crème fraîche épaisse",qtyRef:0.08,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.08},
+      {name:"Sel, muscade",qtyRef:0.002,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.002}
+    ],
+    steps: [
+      {t:"Appareil royale", d:"Battre les œufs avec la crème, assaisonner de sel et muscade râpée. Passer à l'étamine fine."},
+      {t:"Cuisson royale", d:"Verser l'appareil dans des petits moules beurrés. Cuire au bain-marie à four doux (150°C) jusqu'à prise complète. Laisser refroidir."},
+      {t:"Détailler", d:"Démouler et détailler la royale en losanges, dés ou petits ronds selon le décor souhaité."},
+      {t:"Service", d:"Disposer les morceaux de royale dans les tasses ou assiettes creuses. Verser le consommé bouillant au moment de servir."}
+    ],
+    equip: ["Petits moules","Bain-marie","Four","Couteau d'office"],
+    allerg: ["Œufs","Lait"],
+    nut: {kcal: 85, prot: 8, lip: 5, glu: 2},
+    co2: "0.9 kg", eau: "130 L", env: 25,
+    nota: "La royale peut être parfumée à la tomate, aux épinards (verte), aux carottes (orangée) pour varier couleurs et garnitures."
+  },
+  {
+    id: "potage_puree_lentilles",
+    nom: "Potage purée de lentilles",
+    page: 53,
+    source: "Lentilles, lard maigre, légumes, consommé",
+    tags: ["Potage","Purée","Lentilles","Légumineuses"],
+    prepBase: 20, cookBase: 90, dressBase: 10,
+    ingredients: [
+      {name:"Lentilles vertes sèches",qtyRef:0.35,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.35},
+      {name:"Lard maigre",qtyRef:0.08,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.08},
+      {name:"Carottes",qtyRef:0.1,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.1},
+      {name:"Oignons",qtyRef:0.08,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.08},
+      {name:"Bouquet garni",qtyRef:1,unit:"pièce",priceUnit:0.5,defaultPrice:0.5,defaultQty:1},
+      {name:"Consommé ou eau",qtyRef:1.5,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:1.5},
+      {name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.04},
+      {name:"Croûtons frits au beurre",qtyRef:0.06,unit:"kg",priceUnit:3,defaultPrice:3,defaultQty:0.06}
+    ],
+    steps: [
+      {t:"Cuisson", d:"Couvrir les lentilles d'eau froide avec lard, carottes, oignons et bouquet garni. Cuire à petit feu jusqu'à complète tendreté, environ 1h30."},
+      {t:"Passer", d:"Retirer le bouquet garni et le lard. Passer les lentilles et légumes à l'étamine ou au moulin à légumes pour obtenir une purée lisse."},
+      {t:"Finition", d:"Allonger la purée avec le consommé pour obtenir la consistance voulue. Porter à ébullition, rectifier l'assaisonnement. Monter au beurre hors du feu."},
+      {t:"Service", d:"Servir très chaud avec croûtons frits au beurre en soupière ou tasse."}
+    ],
+    equip: ["Marmite","Moulin à légumes ou étamine","Soupière"],
+    allerg: ["Lait","Gluten"],
+    nut: {kcal: 210, prot: 12, lip: 6, glu: 28},
+    co2: "0.7 kg", eau: "80 L", env: 20,
+    nota: "Même procédé pour purée de pois cassés, haricots blancs, flageolets. Dubois recommande toujours les croûtons frits pour les potages de légumineuses."
+  },
+  {
+    id: "potage_puree_gibier",
+    nom: "Potage purée de gibier (Saint-Hubert)",
+    page: 54,
+    source: "Restes de gibier, consommé, crème",
+    tags: ["Potage","Gibier","Purée","Saint-Hubert"],
+    prepBase: 20, cookBase: 45, dressBase: 10,
+    ingredients: [
+      {name:"Chair de gibier cuite (lièvre, perdreau ou faisan)",qtyRef:0.3,unit:"kg",priceUnit:18,defaultPrice:18,defaultQty:0.3},
+      {name:"Consommé de gibier",qtyRef:1.2,unit:"L",priceUnit:3,defaultPrice:3,defaultQty:1.2},
+      {name:"Crème fraîche",qtyRef:0.1,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.1},
+      {name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.04},
+      {name:"Farine (liaison légère)",qtyRef:0.02,unit:"kg",priceUnit:0.8,defaultPrice:0.8,defaultQty:0.02},
+      {name:"Sel, poivre, muscade",qtyRef:0.003,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.003}
+    ],
+    steps: [
+      {t:"Purée de gibier", d:"Piler au mortier (ou mixer) la chair de gibier cuite. Passer à l'étamine en foulant bien pour obtenir une purée fine."},
+      {t:"Liaison", d:"Faire un roux blond léger avec beurre et farine. Mouiller progressivement avec le consommé chaud en fouettant."},
+      {t:"Incorporer", d:"Ajouter la purée de gibier. Laisser mijoter 15 minutes à feu doux en remuant souvent."},
+      {t:"Finition crème", d:"Hors du feu, incorporer la crème fraîche. Rectifier l'assaisonnement. Ne plus faire bouillir après l'ajout de crème."},
+      {t:"Service", d:"Servir brûlant. Accompagner de croûtons en dés frits au beurre ou de petites quenelles de gibier."}
+    ],
+    equip: ["Mortier ou mixer","Étamine","Casserole","Fouet"],
+    allerg: ["Lait","Gluten"],
+    nut: {kcal: 185, prot: 14, lip: 11, glu: 6},
+    co2: "1.8 kg", eau: "200 L", env: 48,
+    nota: "Recette idéale pour valoriser les restes de gibier. La dénomination 'Saint-Hubert' indique toujours une préparation au gibier. Dubois conseille d'ajouter quelques gouttes de cognac."
+  },
+  {
+    id: "potage_bisque_ecrevisses",
+    nom: "Bisque d'écrevisses",
+    page: 56,
+    source: "Écrevisses, mirepoix, vin blanc, crème, consommé",
+    tags: ["Bisque","Écrevisses","Crustacés","Grande cuisine"],
+    prepBase: 30, cookBase: 40, dressBase: 10,
+    ingredients: [
+      {name:"Écrevisses vivantes",qtyRef:24,unit:"unit",priceUnit:1.2,defaultPrice:1.2,defaultQty:24},
+      {name:"Beurre",qtyRef:0.08,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.08},
+      {name:"Mirepoix fine (carotte, oignon, échalote)",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1},
+      {name:"Vin blanc sec",qtyRef:0.15,unit:"L",priceUnit:5,defaultPrice:5,defaultQty:0.15},
+      {name:"Cognac",qtyRef:0.04,unit:"L",priceUnit:30,defaultPrice:30,defaultQty:0.04},
+      {name:"Consommé",qtyRef:1,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:1},
+      {name:"Riz (liaison)",qtyRef:0.04,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.04},
+      {name:"Crème fraîche épaisse",qtyRef:0.15,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.15},
+      {name:"Sel, cayenne, muscade",qtyRef:0.003,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.003}
+    ],
+    steps: [
+      {t:"Saisir les écrevisses", d:"Faire revenir les écrevisses au beurre avec la mirepoix jusqu'à coloration rouge vif. Flamber au cognac."},
+      {t:"Mouiller", d:"Déglacer au vin blanc. Ajouter le consommé et le riz. Cuire 20 minutes à couvert."},
+      {t:"Décortiquer", d:"Retirer les queues d'écrevisses, les décortiquer et réserver. Piler les carapaces au mortier."},
+      {t:"Purée", d:"Passer les carapaces pilées avec le fond de cuisson à l'étamine fine en foulant fort. La couleur doit être d'un beau rouge corail."},
+      {t:"Finition", d:"Réchauffer la bisque, incorporer la crème. Assaisonner de sel, cayenne et muscade. Ajouter les queues d'écrevisses réservées."},
+      {t:"Service", d:"Servir brûlant en soupière préchauffée. La bisque est l'un des fleurons de la cuisine classique."}
+    ],
+    equip: ["Mortier","Étamine","Casserole","Louche"],
+    allerg: ["Crustacés","Lait"],
+    nut: {kcal: 240, prot: 16, lip: 14, glu: 8},
+    co2: "2.1 kg", eau: "280 L", env: 55,
+    nota: "Même procédé pour bisque de homard ou de langoustines. Dubois insiste sur l'importance de piler soigneusement les carapaces pour extraire toute la saveur."
+  },
+  {
+    id: "potage_creme_volaille",
+    nom: "Crème de volaille (velouté)",
+    page: 58,
+    source: "Poularde, roux blanc, crème, consommé",
+    tags: ["Crème","Velouté","Volaille","Poularde"],
+    prepBase: 20, cookBase: 60, dressBase: 10,
+    ingredients: [
+      {name:"Blanc de poularde cuit",qtyRef:0.25,unit:"kg",priceUnit:14,defaultPrice:14,defaultQty:0.25},
+      {name:"Beurre",qtyRef:0.06,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.06},
+      {name:"Farine",qtyRef:0.05,unit:"kg",priceUnit:0.8,defaultPrice:0.8,defaultQty:0.05},
+      {name:"Consommé de volaille",qtyRef:1.2,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:1.2},
+      {name:"Crème fraîche",qtyRef:0.12,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.12},
+      {name:"Jaunes d'œufs (liaison)",qtyRef:2,unit:"unit",priceUnit:0.3,defaultPrice:0.3,defaultQty:2},
+      {name:"Sel, muscade",qtyRef:0.003,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.003}
+    ],
+    steps: [
+      {t:"Roux blanc", d:"Faire fondre le beurre sans coloration. Ajouter la farine, cuire 2 minutes en remuant. Mouiller progressivement avec le consommé chaud en fouettant."},
+      {t:"Purée de volaille", d:"Piler les blancs de poularde au mortier. Passer à l'étamine. Incorporer au velouté."},
+      {t:"Cuisson", d:"Laisser mijoter 20 minutes à feu doux en remuant souvent. Passer à nouveau si nécessaire pour parfaire le lissé."},
+      {t:"Liaison crème-jaunes", d:"Mélanger crème et jaunes d'œufs. Hors du feu, incorporer cette liaison au velouté. Réchauffer sans bouillir."},
+      {t:"Service", d:"Servir en soupière avec petits croûtons ou julienne de blanc de volaille réservé."}
+    ],
+    equip: ["Casserole","Fouet","Mortier","Étamine"],
+    allerg: ["Lait","Gluten","Œufs"],
+    nut: {kcal: 195, prot: 13, lip: 13, glu: 5},
+    co2: "1.2 kg", eau: "180 L", env: 32,
+    nota: "La crème de volaille peut être garnie de petites quenelles de farce de volaille, de pointes d'asperges ou de champignons émincés."
+  },
+  {
+    id: "potage_julienne",
+    nom: "Potage julienne (Darblay)",
+    page: 60,
+    source: "Légumes en julienne, consommé, vermicelle ou riz",
+    tags: ["Julienne","Légumes","Potage clair","Classique"],
+    prepBase: 30, cookBase: 30, dressBase: 5,
+    ingredients: [
+      {name:"Carottes (julienne)",qtyRef:0.08,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.08},
+      {name:"Navets (julienne)",qtyRef:0.06,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.06},
+      {name:"Poireaux (julienne, partie blanche)",qtyRef:0.06,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.06},
+      {name:"Céleri (julienne)",qtyRef:0.04,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.04},
+      {name:"Oignons (julienne fine)",qtyRef:0.04,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.04},
+      {name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.04},
+      {name:"Consommé clarifié",qtyRef:1.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:1.5},
+      {name:"Vermicelle fin ou riz",qtyRef:0.04,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.04},
+      {name:"Pluches de cerfeuil",qtyRef:0.01,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.01}
+    ],
+    steps: [
+      {t:"Julienne", d:"Tailler tous les légumes en julienne très fine et régulière (2 mm d'épaisseur, 4 cm de long). La régularité est essentielle à la présentation."},
+      {t:"Étuver", d:"Faire suer doucement la julienne de légumes au beurre en casserole couverte, 15 minutes, sans coloration."},
+      {t:"Mouiller", d:"Verser le consommé bouillant sur les légumes étuvés. Porter à ébullition."},
+      {t:"Garniture", d:"Ajouter le vermicelle ou le riz lavé. Cuire 10 minutes à petite ébullition."},
+      {t:"Service", d:"Verser en soupière. Ajouter les pluches de cerfeuil au dernier moment. Servir brûlant."}
+    ],
+    equip: ["Casserole","Couteau d'office","Soupière"],
+    allerg: ["Lait","Gluten","Céleri"],
+    nut: {kcal: 95, prot: 5, lip: 4, glu: 10},
+    co2: "0.5 kg", eau: "60 L", env: 15,
+    nota: "Dubois nomme ce potage 'Darblay' quand il est garni de pommes de terre en julienne à la place ou en complément des légumes. Le cerfeuil est indispensable."
+  },
+  {
+    id: "potage_printanier",
+    nom: "Potage printanier",
+    page: 62,
+    source: "Petits légumes primeurs, consommé, liaison légère",
+    tags: ["Printanier","Primeurs","Légumes","Saison"],
+    prepBase: 30, cookBase: 25, dressBase: 5,
+    ingredients: [
+      {name:"Petits pois frais écossés",qtyRef:0.1,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.1},
+      {name:"Haricots verts (1 cm)",qtyRef:0.06,unit:"kg",priceUnit:4,defaultPrice:4,defaultQty:0.06},
+      {name:"Carottes primeur (brunoise)",qtyRef:0.08,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.08},
+      {name:"Navets primeur (brunoise)",qtyRef:0.06,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.06},
+      {name:"Asperges vertes (pointes)",qtyRef:0.08,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.08},
+      {name:"Laitue (chiffonnade fine)",qtyRef:0.04,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.04},
+      {name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.04},
+      {name:"Consommé",qtyRef:1.4,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:1.4},
+      {name:"Cerfeuil frais",qtyRef:0.01,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.01}
+    ],
+    steps: [
+      {t:"Blanchir", d:"Blanchir séparément carottes, navets, haricots, pois et asperges à l'eau bouillante salée. Rafraîchir immédiatement pour fixer la couleur."},
+      {t:"Étuver laitue", d:"Faire tomber la chiffonnade de laitue au beurre 5 minutes sans coloration."},
+      {t:"Assembler", d:"Verser le consommé bouillant. Ajouter tous les légumes blanchis. Réchauffer doucement 5 minutes sans ébullition pour ne pas écraser les légumes."},
+      {t:"Service", d:"Finir avec le beurre cru en parcelles hors du feu. Parsemer de cerfeuil. Servir aussitôt."}
+    ],
+    equip: ["Casseroles","Soupière","Écumoire"],
+    allerg: ["Lait","Céleri"],
+    nut: {kcal: 120, prot: 6, lip: 5, glu: 14},
+    co2: "0.6 kg", eau: "80 L", env: 18,
+    nota: "Ce potage n'est bon qu'avec des légumes de saison absolument frais. Hors saison, Dubois recommande de le remplacer par un potage à base de légumes du moment."
+  },
+  {
+    id: "soupe_oignon_gratinee",
+    nom: "Soupe à l'oignon gratinée",
+    page: 64,
+    source: "Oignons, beurre, consommé ou eau, gruyère, croûtes",
+    tags: ["Soupe","Oignon","Gratiné","Populaire"],
+    prepBase: 15, cookBase: 45, dressBase: 10,
+    ingredients: [
+      {name:"Oignons (émincés fins)",qtyRef:0.4,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.4},
+      {name:"Beurre",qtyRef:0.05,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.05},
+      {name:"Farine",qtyRef:0.02,unit:"kg",priceUnit:0.8,defaultPrice:0.8,defaultQty:0.02},
+      {name:"Consommé ou bouillon",qtyRef:1.4,unit:"L",priceUnit:1,defaultPrice:1,defaultQty:1.4},
+      {name:"Pain rassis (tranches)",qtyRef:0.1,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.1},
+      {name:"Gruyère râpé",qtyRef:0.08,unit:"kg",priceUnit:12,defaultPrice:12,defaultQty:0.08},
+      {name:"Sel, poivre",qtyRef:0.003,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.003}
+    ],
+    steps: [
+      {t:"Colorer les oignons", d:"Faire revenir les oignons émincés au beurre à feu moyen jusqu'à belle coloration dorée uniforme, environ 20 minutes. Saupoudrer de farine, mélanger 2 minutes."},
+      {t:"Mouiller", d:"Verser le bouillon bouillant. Assaisonner. Laisser cuire 20 minutes à petit feu."},
+      {t:"Gratiner", d:"Verser la soupe en soupière ou en louches individuelles allant au four. Poser les tranches de pain rassis. Couvrir généreusement de gruyère râpé."},
+      {t:"Four", d:"Passer sous le grill ou à four très chaud pour gratiner le fromage jusqu'à belle coloration blonde."}
+    ],
+    equip: ["Sauteuse","Casserole","Louches ou soupière allant au four","Râpe"],
+    allerg: ["Lait","Gluten"],
+    nut: {kcal: 220, prot: 9, lip: 10, glu: 25},
+    co2: "0.9 kg", eau: "100 L", env: 28,
+    nota: "Recette populaire et économique, considérée par Dubois comme 'la soupe du peuple de Paris'. Le secret : ne pas brûler les oignons, les colorer lentement et uniformément."
+  },
+  {
+    id: "potage_tortue_claire",
+    nom: "Potage tortue claire (mock turtle)",
+    page: 67,
+    source: "Tête de veau, consommé, aromates, madère, herbes à tortue",
+    tags: ["Tortue","Tête de veau","Grande cuisine","Anglais"],
+    prepBase: 30, cookBase: 120, dressBase: 15,
+    ingredients: [
+      {name:"Tête de veau (morceaux gélatineux cuits)",qtyRef:0.3,unit:"kg",priceUnit:7,defaultPrice:7,defaultQty:0.3},
+      {name:"Consommé corsé",qtyRef:1.5,unit:"L",priceUnit:2.5,defaultPrice:2.5,defaultQty:1.5},
+      {name:"Madère sec",qtyRef:0.08,unit:"L",priceUnit:12,defaultPrice:12,defaultQty:0.08},
+      {name:"Herbes à tortue (basilic, marjolaine, sarriette, thym)",qtyRef:0.005,unit:"kg",priceUnit:15,defaultPrice:15,defaultQty:0.005},
+      {name:"Tomates (purée)",qtyRef:0.05,unit:"kg",priceUnit:2,defaultPrice:2,defaultQty:0.05},
+      {name:"Sel, poivre de Cayenne",qtyRef:0.003,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.003}
+    ],
+    steps: [
+      {t:"Base gélatineuse", d:"Tailler la tête de veau cuite en dés réguliers de 1 cm. Ces morceaux simulent la chair de tortue (d'où 'mock turtle')."},
+      {t:"Infusion herbes", d:"Faire infuser les herbes à tortue dans le consommé chaud 20 minutes. Passer."},
+      {t:"Assembler", d:"Ajouter la purée de tomate, les dés de tête de veau, assaisonner de sel et cayenne."},
+      {t:"Madère", d:"Incorporer le madère en fin de cuisson. Ne pas faire bouillir après l'ajout de madère pour conserver l'arôme."},
+      {t:"Service", d:"Servir en tasses à consommé préchauffées. Ce potage se sert aussi bien en entrée chaude de grand dîner."}
+    ],
+    equip: ["Casserole","Passoire fine","Tasses à consommé"],
+    allerg: ["Céleri"],
+    nut: {kcal: 120, prot: 10, lip: 4, glu: 4},
+    co2: "1.0 kg", eau: "160 L", env: 30,
+    nota: "Le 'mock turtle' est un classique de la cuisine franco-anglaise du XIXe siècle. Les 'herbes à tortue' sont un mélange aromatique spécifique que Dubois compose avec soin."
+  },
+  {
+    id: "potage_cressoniere",
+    nom: "Potage cressonnière",
+    page: 70,
+    source: "Cresson de fontaine, pommes de terre, consommé, crème",
+    tags: ["Cresson","Purée","Légumes verts","Santé"],
+    prepBase: 15, cookBase: 30, dressBase: 5,
+    ingredients: [
+      {name:"Cresson de fontaine (feuilles)",qtyRef:0.2,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.2},
+      {name:"Pommes de terre farineuses",qtyRef:0.25,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.25},
+      {name:"Oignons",qtyRef:0.06,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.06},
+      {name:"Beurre",qtyRef:0.04,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.04},
+      {name:"Consommé ou eau",qtyRef:1.2,unit:"L",priceUnit:0.5,defaultPrice:0.5,defaultQty:1.2},
+      {name:"Crème fraîche",qtyRef:0.08,unit:"L",priceUnit:4,defaultPrice:4,defaultQty:0.08},
+      {name:"Sel, poivre",qtyRef:0.003,unit:"kg",priceUnit:5,defaultPrice:5,defaultQty:0.003}
+    ],
+    steps: [
+      {t:"Étuver", d:"Faire suer les oignons émincés au beurre. Ajouter les pommes de terre pelées et coupées. Mouiller avec le consommé. Cuire 20 minutes."},
+      {t:"Cresson", d:"Blanchir rapidement le cresson 2 minutes à l'eau bouillante salée. Rafraîchir pour fixer la couleur verte."},
+      {t:"Mixer", d:"Mixer les pommes de terre cuites avec leur bouillon puis ajouter le cresson blanchi. Passer à l'étamine pour un résultat très lisse."},
+      {t:"Finition", d:"Réchauffer la purée, ajouter la crème. Rectifier l'assaisonnement. La couleur doit rester d'un beau vert vif."},
+      {t:"Service", d:"Servir chaud ou froid (vichyssoise au cresson). Garnir de quelques feuilles de cresson crues et d'un filet de crème."}
+    ],
+    equip: ["Casserole","Mixeur ou étamine","Soupière"],
+    allerg: ["Lait"],
+    nut: {kcal: 130, prot: 4, lip: 7, glu: 14},
+    co2: "0.5 kg", eau: "70 L", env: 15,
+    nota: "Ce potage peut aussi se servir froid comme le vichyssoise. Dubois souligne que le cresson doit être de fontaine et non de jardin pour un goût plus prononcé."
+  },
+  {
+    id: "potage_brunoise_royale",
+    nom: "Consommé brunoise à la royale",
+    page: 73,
+    source: "Consommé clarifié, légumes en brunoise, royale",
+    tags: ["Consommé","Brunoise","Royale","Garniture"],
+    prepBase: 35, cookBase: 30, dressBase: 10,
+    ingredients: [
+      {name:"Consommé clarifié",qtyRef:1.5,unit:"L",priceUnit:2,defaultPrice:2,defaultQty:1.5},
+      {name:"Carottes (brunoise 3 mm)",qtyRef:0.05,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.05},
+      {name:"Navets (brunoise 3 mm)",qtyRef:0.04,unit:"kg",priceUnit:1.2,defaultPrice:1.2,defaultQty:0.04},
+      {name:"Céleri (brunoise 3 mm)",qtyRef:0.03,unit:"kg",priceUnit:2.5,defaultPrice:2.5,defaultQty:0.03},
+      {name:"Royale (voir fiche)",qtyRef:0.15,unit:"kg",priceUnit:1.5,defaultPrice:1.5,defaultQty:0.15},
+      {name:"Pluches de cerfeuil",qtyRef:0.005,unit:"kg",priceUnit:8,defaultPrice:8,defaultQty:0.005}
+    ],
+    steps: [
+      {t:"Brunoise", d:"Tailler tous les légumes en brunoise très régulière de 3 mm. La régularité absolue est essentielle pour la présentation de ce consommé de grand dîner."},
+      {t:"Cuire la brunoise", d:"Cuire séparément chaque légume à l'eau bouillante salée pour conserver sa couleur. Rafraîchir, égoutter."},
+      {t:"Royale", d:"Préparer la royale nature (œufs + crème). Cuire au bain-marie. Laisser refroidir complètement. Détailler en dés de 5 mm."},
+      {t:"Assembler", d:"Verser le consommé bouillant dans les tasses. Ajouter la brunoise et les dés de royale."},
+      {t:"Service", d:"Parsemer de pluches de cerfeuil. Servir immédiatement en tasses à consommé très chaudes."}
+    ],
+    equip: ["Couteau d'office","Petits moules","Bain-marie","Tasses à consommé"],
+    allerg: ["Œufs","Lait","Céleri"],
+    nut: {kcal: 70, prot: 7, lip: 3, glu: 4},
+    co2: "0.7 kg", eau: "100 L", env: 18,
+    nota: "Ce consommé garni est le plus classique des potages de grand restaurant. Dubois recommande de chauffer les tasses au bain-marie avant le service."
+  }
+];
+
+// ═══════════════════════════════════════════════════════════
+// MOTEUR — identique Escoffier, palette Dubois
+// ═══════════════════════════════════════════════════════════
+var currentItemId = null, ingredientsData = [], defaultIngredients = [];
+var currentPortions = 6, coeffVente = 3.5;
+var defaultPrep = 0, defaultDress = 0, currentPrepRaw = 0, currentCookRaw = '0', currentDressRaw = 0;
+var autoTimes = true;
+var ficheContainer = null;
+var prepInput, cookInput, dressInput, autoCheckbox, portionsInput, coeffInput;
+var portionLabel, qtyLabels, totalCostSpan, costPerPortionSpan, sellingPriceSpan, marginPercentSpan, totalIngCostSpan, marginBar, tbody;
+
+function escHtml(s) {
+  return String(s).replace(/[&<>"']/g, function(m) {
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m];
+  });
+}
+function parseDurationToMinutes(v) { var m = String(v).match(/(\d+)h\s*(\d+)?/i); if(m) return parseInt(m[1])*60 + (parseInt(m[2])||0); return NaN; }
+function formatDuration(m) { if(m >= 60) { var h=Math.floor(m/60), mn=m%60; return h+'h'+(mn>0?''+mn:''); } return m+''; }
+
+function generateFicheHTML(item) {
+  var stepsHtml = item.steps.map(function(s,i){
+    return '<div class="step"><div class="snum">'+(i+1)+'</div><div><div class="stitle">'+escHtml(s.t)+'</div><div class="sdesc">'+escHtml(s.d)+'</div></div></div>';
+  }).join('');
+  var tagsHtml = item.tags.map(function(t){ return '<span class="tag tag-or">'+escHtml(t)+'</span>'; }).join('');
+  var equipHtml = (item.equip||["Ustensiles classiques"]).map(function(e){ return '<span class="tag tag-gris">'+escHtml(e)+'</span>'; }).join('');
+  var allergHtml = (item.allerg||[]).map(function(a){ return '<span class="tag tag-rouge">⚠ '+escHtml(a)+'</span>'; }).join('');
+  var notaText = item.nota ? '<p style="font-size:12px;margin-top:8px;font-style:italic;background:var(--bg2);padding:8px 10px;border-radius:6px;border-left:3px solid #c9a14a;">📜 NOTA — '+escHtml(item.nota)+'</p>' : '';
+  var envColor = item.env < 30 ? '#2d9e6b' : (item.env < 45 ? '#c9a14a' : '#c94a1c');
+  var envLabel = item.env < 30 ? 'faible' : (item.env < 45 ? 'modérée' : 'élevée');
+
+  return '<div class="fiche-header">' +
+    '<div class="title-row"><div class="main-title">'+escHtml(item.nom)+'</div>' +
+    '<div class="reference">CUISINE DE TOUS LES PAYS · Page '+item.page+'</div></div>' +
+    '<div class="fiche-source">📖 Urbain Dubois — <em>Cuisine de tous les Pays</em> (1872) · '+escHtml(item.source)+'</div>' +
+    '<div class="tags">'+tagsHtml+'</div></div>' +
+
+    '<div class="two-col">' +
+      '<div class="card"><div class="clabel">⏱ TEMPS DE PRÉPARATION</div>' +
+        '<div class="time-grid"><div class="time-label">Préparation</div><input type="text" id="prepTime" class="time-input" value="'+item.prepBase+'"><div class="time-unit">min</div></div>' +
+        '<div class="time-grid"><div class="time-label">Cuisson</div><input type="text" id="cookTime" class="time-input" value="'+item.cookBase+'"><div class="time-unit">min</div></div>' +
+        '<div class="time-grid"><div class="time-label">Dressage</div><input type="text" id="dressTime" class="time-input" value="'+item.dressBase+'"><div class="time-unit">min</div></div>' +
+        '<div class="check-row"><input type="checkbox" id="autoTimesCheckbox" checked><span>Auto-ajustement selon portions</span></div>' +
+        '<div class="info-time">✔️ Base : 6 couverts — les ingrédients s\'adaptent automatiquement.</div>' +
+      '</div>' +
+      '<div class="card"><div class="clabel">💰 COÛT & MARGE (HT)</div>' +
+        '<div class="ri"><span class="rl">Coût total matière</span><span class="rv" id="totalCostValue">—</span></div>' +
+        '<div class="ri"><span class="rl">Coût / portion</span><span class="rv" id="costPerPortion">—</span></div>' +
+        '<div class="ri"><span class="rl">Prix vente HT (coef)</span><span class="rv" id="sellingPriceValue">—</span></div>' +
+        '<div class="ri"><span class="rl">Marge brute réelle</span><span class="rv" id="marginPercent">—</span></div>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="card"><div class="clabel">🥣 INGRÉDIENTS · base <span id="portionLabel">6</span> portions</div>' +
+      '<div class="portions-row">' +
+        '<div><span class="plbl">🍽️ Nombre de couverts</span><input type="number" id="portionsInput" value="6" min="1" step="1" style="width:90px;padding:6px;border-radius:20px;border:1px solid var(--border2);background:var(--bg);color:var(--text);"></div>' +
+        '<div><span class="plbl">Coefficient de vente</span><input type="number" id="coeffInput" value="3.5" step="0.1" min="1.2" style="width:80px;padding:6px;border-radius:20px;border:1px solid var(--border2);background:var(--bg);color:var(--text);"></div>' +
+        '<div style="flex:1"><div class="plbl">Marge (barre visuelle)</div><div class="env-bar"><div id="marginBar" style="height:100%;width:0%;background:#1D9E75;border-radius:4px;transition:width .3s"></div></div></div>' +
+      '</div>' +
+      '<table class="ingr-table"><thead><tr>' +
+        '<th>Ingrédient</th><th>Qté (pour <span class="qtyBaseLabel">6</span> pers)</th><th>Unité</th><th>Prix achat (€/unité)</th><th>Coût total</th>' +
+      '</tr></thead><tbody id="ingredientTbody"></tbody></table>' +
+      '<div class="ri" style="margin-top:12px;"><span class="rl">💸 COÛT TOTAL INGRÉDIENTS :</span><span class="rv" id="totalIngCost">0.00 €</span></div>' +
+    '</div>' +
+
+    '<div class="card"><div class="clabel">📋 FAÇONNAGE & CUISSON (d\'après Dubois)</div>'+stepsHtml+'</div>' +
+
+    '<div class="two-col">' +
+      '<div class="card"><div class="clabel">⚙️ Équipements essentiels</div><div class="tags-row">'+equipHtml+'</div></div>' +
+      '<div class="card"><div class="clabel">⚠️ Allergènes & traçabilité</div><div class="tags-row">'+allergHtml+'</div></div>' +
+    '</div>' +
+
+    '<div class="card"><div class="clabel">🍽️ Présentation & conseil de Dubois</div>' +
+      '<p style="font-size:13px;line-height:1.7;">La limpidité et la chaleur sont les deux exigences absolues du potage selon Dubois. Toujours servir les potages dans des soupières ou tasses préchauffées.</p>' +
+      notaText +
+    '</div>' +
+
+    '<div class="card"><div class="clabel">🧼 HACCP / PMS — Recommandations</div>' +
+      '<p style="font-size:12px;line-height:1.7;">• Températures de service : potages chauds à 75°C minimum.<br>• Refroidissement rapide (0–3°C en moins de 2h) si préparation anticipée.<br>• Consommé à base de viandes : traçabilité fournisseur obligatoire.</p>' +
+    '</div>' +
+
+    '<div class="two-col">' +
+      '<div class="card"><div class="clabel">🌱 Impact environnemental (par portion)</div>' +
+        '<div><span style="font-size:12px;">Empreinte <strong>'+envLabel+'</strong></span>' +
+        '<div class="env-bar"><div style="height:100%;width:'+item.env+'%;background:'+envColor+';border-radius:4px;"></div></div>' +
+        '<div style="display:flex;gap:1rem;margin-top:6px;font-size:11px;color:var(--text2);font-family:sans-serif;"><span>🌍 CO₂ : '+item.co2+'</span><span>💧 Eau : '+item.eau+'</span></div></div>' +
+      '</div>' +
+      '<div class="card"><div class="clabel">🍞 Valeurs nutritionnelles (par portion)</div>' +
+        '<div class="nut-grid">' +
+          '<div class="nc"><div class="nv">'+item.nut.kcal+'</div><div class="nl">kcal</div></div>' +
+          '<div class="nc"><div class="nv">'+item.nut.prot+' g</div><div class="nl">Protéines</div></div>' +
+          '<div class="nc"><div class="nv">'+item.nut.lip+' g</div><div class="nl">Lipides</div></div>' +
+          '<div class="nc"><div class="nv">'+item.nut.glu+' g</div><div class="nl">Glucides</div></div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+}
+
+function attachDOMReferences() {
+  prepInput = document.getElementById('prepTime');
+  cookInput = document.getElementById('cookTime');
+  dressInput = document.getElementById('dressTime');
+  autoCheckbox = document.getElementById('autoTimesCheckbox');
+  portionsInput = document.getElementById('portionsInput');
+  coeffInput = document.getElementById('coeffInput');
+  portionLabel = document.getElementById('portionLabel');
+  qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+  totalCostSpan = document.getElementById('totalCostValue');
+  costPerPortionSpan = document.getElementById('costPerPortion');
+  sellingPriceSpan = document.getElementById('sellingPriceValue');
+  marginPercentSpan = document.getElementById('marginPercent');
+  totalIngCostSpan = document.getElementById('totalIngCost');
+  marginBar = document.getElementById('marginBar');
+  tbody = document.getElementById('ingredientTbody');
+}
+
+function renderIngredientTable() {
+  if(!tbody) return;
+  tbody.innerHTML = '';
+  for(var i = 0; i < ingredientsData.length; i++) {
+    var ing = ingredientsData[i];
+    var tr = document.createElement('tr');
+    tr.innerHTML =
+      '<td style="font-weight:600">'+escHtml(ing.name)+'</td>' +
+      '<td><input type="number" class="ni qty" data-idx="'+i+'" value="'+ing.qty.toFixed(3)+'" step="0.001" style="width:90px;"> <span style="font-size:11px;color:var(--text2)">'+escHtml(ing.unit)+'</span></td>' +
+      '<td style="font-size:11px;color:var(--text2)">'+escHtml(ing.unit)+'</td>' +
+      '<td><input type="number" class="ni prix" data-idx="'+i+'" value="'+ing.priceUnit.toFixed(2)+'" step="0.10" style="width:80px;"></td>' +
+      '<td class="line-total" style="text-align:right;font-weight:600">'+( ing.qty * ing.priceUnit).toFixed(2)+' €</td>';
+    tbody.appendChild(tr);
+    (function(idx){
+      tr.querySelector('.qty').addEventListener('input', function(){ updateFromInputs(); });
+      tr.querySelector('.prix').addEventListener('input', function(){ updateFromInputs(); });
+    })(i);
+  }
+}
+
+function updateFromInputs() {
+  var rows = tbody.querySelectorAll('tr');
+  for(var i = 0; i < rows.length; i++) {
+    var qty = parseFloat(rows[i].querySelector('.qty').value) || 0;
+    var price = parseFloat(rows[i].querySelector('.prix').value) || 0;
+    ingredientsData[i].qty = qty;
+    ingredientsData[i].priceUnit = price;
+    rows[i].querySelector('.line-total').innerText = (qty * price).toFixed(2) + ' €';
+  }
+  updateAllCosts();
+}
+
+function updateAllCosts() {
+  var total = 0;
+  for(var i = 0; i < ingredientsData.length; i++) total += ingredientsData[i].qty * ingredientsData[i].priceUnit;
+  var costPer = total / currentPortions;
+  var pvTotal = costPer * coeffVente * currentPortions;
+  var margin = pvTotal > 0 ? (pvTotal - total) / pvTotal * 100 : 0;
+  if(totalCostSpan) totalCostSpan.innerText = total.toFixed(2) + ' €';
+  if(costPerPortionSpan) costPerPortionSpan.innerText = costPer.toFixed(2) + ' €';
+  if(sellingPriceSpan) sellingPriceSpan.innerText = pvTotal.toFixed(2) + ' €';
+  if(marginPercentSpan) marginPercentSpan.innerText = margin.toFixed(1) + '%';
+  if(totalIngCostSpan) totalIngCostSpan.innerText = total.toFixed(2) + ' €';
+  if(marginBar) {
+    var w = Math.min(100, Math.max(0, margin));
+    marginBar.style.width = w + '%';
+    marginBar.style.background = margin > 65 ? '#2d9e6b' : (margin > 40 ? '#c9a14a' : '#c94a1c');
+  }
+}
+
+function applyAutoTimes() {
+  if(!autoTimes) return;
+  var ratio = currentPortions / 6;
+  currentPrepRaw = Math.round(defaultPrep * ratio);
+  currentDressRaw = Math.round(defaultDress * ratio);
+  syncTimesToUI();
+}
+
+function syncTimesToUI() {
+  if(prepInput) prepInput.value = formatDuration(currentPrepRaw);
+  if(dressInput) dressInput.value = formatDuration(currentDressRaw);
+  if(cookInput) cookInput.value = currentCookRaw;
+}
+
+function syncTimesFromUI() {
+  if(prepInput) { var m = parseDurationToMinutes(prepInput.value); currentPrepRaw = isNaN(m) ? (parseInt(prepInput.value)||0) : m; }
+  if(dressInput) { var m2 = parseDurationToMinutes(dressInput.value); currentDressRaw = isNaN(m2) ? (parseInt(dressInput.value)||0) : m2; }
+  if(cookInput) currentCookRaw = cookInput.value;
+}
+
+function updateQuantitiesByPortions() {
+  var factor = currentPortions / 6;
+  for(var i = 0; i < ingredientsData.length; i++) {
+    ingredientsData[i].qty = defaultIngredients[i].defaultQty * factor;
+  }
+  renderIngredientTable();
+  updateAllCosts();
+}
+
+function bindEvents() {
+  if(portionsInput) portionsInput.addEventListener('input', function() {
+    currentPortions = parseInt(portionsInput.value) || 1;
+    if(portionLabel) portionLabel.innerText = currentPortions;
+    qtyLabels = document.querySelectorAll('.qtyBaseLabel');
+    qtyLabels.forEach(function(lbl){ lbl.innerText = currentPortions; });
+    updateQuantitiesByPortions();
+    if(autoTimes) applyAutoTimes();
+  });
+  if(coeffInput) coeffInput.addEventListener('input', function() {
+    coeffVente = parseFloat(coeffInput.value) || 3.0;
+    updateAllCosts();
+  });
+  if(autoCheckbox) autoCheckbox.addEventListener('change', function() {
+    autoTimes = autoCheckbox.checked;
+    if(autoTimes) applyAutoTimes();
+  });
+  if(prepInput) prepInput.addEventListener('input', function() { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked = false; autoTimes = false; } });
+  if(cookInput) cookInput.addEventListener('input', function() { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked = false; autoTimes = false; } });
+  if(dressInput) dressInput.addEventListener('input', function() { syncTimesFromUI(); if(autoTimes){ autoCheckbox.checked = false; autoTimes = false; } });
+}
+
+function loadItem(itemId) {
+  var item = null;
+  for(var i = 0; i < itemsData.length; i++) { if(itemsData[i].id === itemId) { item = itemsData[i]; break; } }
+  if(!item) return;
+  currentItemId = itemId;
+  defaultPrep = item.prepBase; defaultDress = item.dressBase;
+  currentPrepRaw = item.prepBase; currentCookRaw = item.cookBase.toString(); currentDressRaw = item.dressBase;
+  autoTimes = true;
+  ingredientsData = item.ingredients.map(function(ing){ return {name:ing.name, unit:ing.unit, qty:ing.defaultQty, priceUnit:ing.defaultPrice}; });
+  defaultIngredients = item.ingredients.slice();
+  currentPortions = 6; coeffVente = 3.5;
+  ficheContainer = document.getElementById('ficheContainer');
+  ficheContainer.id = 'fiche-' + item.id;
+  ficheContainer.innerHTML = generateFicheHTML(item);
+  attachDOMReferences();
+  renderIngredientTable();
+  updateAllCosts();
+  if(autoTimes) applyAutoTimes();
+  bindEvents();
+  if(autoCheckbox) autoCheckbox.checked = true;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var select = document.getElementById('itemSelect');
+  for(var i = 0; i < itemsData.length; i++) {
+    var item = itemsData[i];
+    var option = document.createElement('option');
+    option.value = item.id;
+    option.textContent = item.nom + ' (p. ' + item.page + ')';
+    select.appendChild(option);
+  }
+  select.addEventListener('change', function(e){ loadItem(e.target.value); });
+  var hash = window.location.hash.replace('#fiche-', '');
+  var targetId = (hash && itemsData.find(function(it){ return it.id === hash; })) ? hash : itemsData[0].id;
+  select.value = targetId;
+  loadItem(targetId);
+});
+
+})();
+</script>
+</body>
+</html>
